@@ -39,7 +39,7 @@ jobs:
           - name: Default
           # --------------------------------------------------------------------------------
           - name: s390x self-hosted
-            config: --enable-mods-shared=reallyall
+            config: --enable-mods-shared=reallyall --enable-mpms-shared=all
             runs_on: linux-s390x
           # -------------------------------------------------------------------------
           - name: All-static modules
