@@ -37,6 +37,10 @@ jobs:
               TEST_LOGNO=1
           # -------------------------------------------------------------------------
           - name: Default
+          # --------------------------------------------------------------------------------
+          - name: s390x self-hosted
+            config: --enable-mods-shared=reallyall
+            runs_on: linux-s390x
           # -------------------------------------------------------------------------
           - name: All-static modules
             config: --enable-mods-static=reallyall
@@ -328,7 +332,7 @@ jobs:
               APU_CONFIG="--without-crypto"
             pkgs: subversion
           # -------------------------------------------------------------------------
-    runs-on: ${{ matrix.os == '' && 'ubuntu-latest' || matrix.os }}
+    runs-on: ${{ matrix.runs_on || matrix.os == '' && 'ubuntu-latest' || matrix.os }}
     timeout-minutes: 30
     env:
       NOTEST_CFLAGS: ${{ matrix.notest-cflags }}
